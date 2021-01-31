@@ -80,3 +80,11 @@ Git必须知道当前版本是哪个版本，在Git中，用`HEAD`表示当前�
 $ git reset --hard HEAD^
 ```
 
+## 管理修改
+
+```makefile
+$ git add readme.md
+$ git status
+$ git commint -m "git tracks changes"
+```
+
