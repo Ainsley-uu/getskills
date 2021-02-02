@@ -88,3 +88,87 @@ $ git status
 $ git commint -m "git tracks changes"
 ```
 
+## Fork a repo
+
+```
+git clone 完整地址
+```
+
+---
+
+### Push
+
+**初始化**
+
+```
+git init
+```
+
+**加载文件**
+
+```
+git add .		# 所有文件
+git add index.html,test.html	#单个文件
+```
+
+**提交文件**
+
+```
+git commit -m "init commit"
+```
+
+**查看git状态**
+
+```
+git status
+```
+
+**推送代码**
+
+```
+git push origin master
+```
+
+****
+
+### 提交自己本地项目的修改到 github 的库中.
+
+如果你自己的项目，你自己 clone 到本地后, 进行了一系列的修改， 然后你想提交， 大多最方便的方式是使用 HTTP 的方式进行提交。
+
+但你提交的时候， 会发现一直提示：
+
+```
+error: The requested URL returned error: 403 Forbidden while accessing http://xxx
+```
+
+这时， 你需要修改你的项目目录下的 .git/config 文件 在 url 中修改成象
+
+```
+url = https://iakuf@github.com/iakuf/mojo
+```
+
+也就是给你的 github 的帐号名使用 @ 加到前面， 才能做为 HTTP 认证的用户来认证. 这样就不用关心 SSH 的 Key 的问题了。
+
+### 更新自己 Fork 的代码项目和原作者的项目进度一致的方法
+
+经过一段时间， 有可能作者原来的代码变化很大， 你想接着在他最新的代码上修改， 这时你需要合并原作者的最新代码过来， 让你的项目变成最新的。这个需要本地操作。 假设前提是， 你现在你的代码是克隆下来在本地的。 例如我 Fork 了 sri (Mojo 的作者) 的 Mojo 项目， 我的项目地址是 https://github.com/iakuf/mojo. 我现在克隆这个在我的本地了。
+
+```
+git clone https://github.com/iakuf/mojo
+ cd mojo
+```
+
+接着， 我只需要添加 sri 项目的地址,也就是主项目的 remote 地址
+
+```
+git remote add sri https://github.com/kraih/mojo
+git fetch sri
+git merge sri/master
+```
+
+这新就能给你的本地的项目变成和主项目一样。 然后你按正常的流程进行修改并提交到你的项目就好了。
+
+```
+git commit -am '更新到原作者的主分支的进度'
+git push origin
+```
